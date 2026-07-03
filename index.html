@@ -405,12 +405,16 @@
 
     @media (max-width: 900px) {
       .medic-header {
-        grid-template-columns: 1fr;
+        grid-template-columns: auto 1fr auto;
         gap: 22px;
       }
 
       .account {
-        justify-self: start;
+        justify-self: end;
+      }
+
+      .account span {
+        display: none;
       }
 
       .search-box {
@@ -439,19 +443,64 @@
         padding: 24px 18px 90px;
       }
 
+      .medic-header {
+        grid-template-columns: auto 1fr auto;
+        gap: 12px;
+      }
+
+      .logo-top {
+        font-size: 18px;
+        letter-spacing: 2px;
+      }
+
+      .logo-go {
+        font-size: 24px;
+      }
+
+      .logo-plus {
+        width: 20px;
+        height: 20px;
+      }
+
+      .logo-plus::before {
+        width: 20px;
+        height: 5px;
+        top: 7px;
+      }
+
+      .logo-plus::after {
+        width: 5px;
+        height: 20px;
+        left: 7px;
+      }
+
+      .logo-text {
+        display: none;
+      }
+
       .search-box {
-        height: auto;
-        padding: 16px;
-        flex-wrap: wrap;
+        height: 48px;
+        padding: 0 14px;
+        gap: 8px;
+        border-radius: 12px;
+      }
+
+      .search-icon {
+        width: 20px;
+        height: 20px;
       }
 
       .search-box input {
-        flex-basis: calc(100% - 46px);
         font-size: 14px;
       }
 
       .search-box button {
-        width: 100%;
+        display: none;
+      }
+
+      .account svg {
+        width: 24px;
+        height: 24px;
       }
 
       .hero-card {
