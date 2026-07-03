@@ -398,20 +398,26 @@
       }
       .medic-header {
         flex-wrap: nowrap;
-        gap: 16px;
+        gap: 12px;
         margin-bottom: 12px;
       }
       
       .search-container {
         order: initial;
         flex: 1;
-        max-width: 180px;
         padding: 6px 12px;
-        margin-left: auto;
       }
       
       .search-container input {
-        font-size: 14px;
+        font-size: 13px;
+        min-width: 0;
+      }
+      
+      .search-icon {
+        flex-shrink: 0;
+        width: 16px;
+        height: 16px;
+        margin-right: 6px;
       }
       
       .search-btn { display: none; }
