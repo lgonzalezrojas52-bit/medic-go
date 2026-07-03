@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Medic GO - Tienda</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", "Montserrat", Arial, sans-serif;
+      background: #ffffff;
+      color: #073b82;
+    }
+
+    .medic-page {
+      width: 100%;
+      min-height: 100vh;
+      padding: 42px 64px 80px;
+      background:
+        radial-gradient(circle at 95% 95%, rgba(0, 83, 200, 0.08), transparent 28%),
+        linear-gradient(180deg, #ffffff 0%, #f9fcff 100%);
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* HEADER */
+
+    .medic-header {
+      display: grid;
+      grid-template-columns: 210px 1fr 190px;
+      align-items: center;
+      gap: 32px;
+      margin-bottom: 36px;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: 1;
+    }
+
+    .logo-top {
+      font-size: 34px;
+      letter-spacing: 6px;
+      font-weight: 500;
+      color: #073b82;
+    }
+
+    .logo-bottom {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: -3px;
+    }
+
+    .logo-go {
+      font-size: 42px;
+      font-weight: 900;
+      color: #005bdf;
+      letter-spacing: 2px;
+    }
+
+    .logo-plus {
+      width: 35px;
+      height: 35px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .logo-plus::before,
+    .logo-plus::after {
+      content: "";
+      position: absolute;
+      background: #0bb3b8;
+      border-radius: 4px;
+    }
+
+    .logo-plus::before {
+      width: 35px;
+      height: 8px;
+      top: 13px;
+      left: 0;
+    }
+
+    .logo-plus::after {
+      width: 8px;
+      height: 35px;
+      left: 13px;
+      top: 0;
+    }
+
+    .logo-text {
+      font-size: 10px;
+      font-weight: 800;
+      color: #005bdf;
+      letter-spacing: 0.8px;
+      margin-top: 4px;
+    }
+
+    .search-box {
+      max-width: 920px;
+      width: 100%;
+      height: 64px;
+      background: #fff;
+      border: 1px solid #e3ebf8;
+      border-radius: 16px;
+      box-shadow: 0 8px 22px rgba(8, 60, 130, 0.06);
+      display: flex;
+      align-items: center;
+      padding: 0 16px 0 26px;
+      gap: 18px;
+    }
+
+    .search-icon {
+      width: 24px;
+      height: 24px;
+      color: #083b81;
+      flex-shrink: 0;
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+      flex: 1;
+      font-size: 16px;
+      font-weight: 600;
+      color: #516176;
+      min-width: 0;
+    }
+
+    .search-box input::placeholder {
+      color: #6c7380;
+    }
+
+    .search-box button {
+      border: none;
+      background: #005bdf;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 800;
+      padding: 14px 30px;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .search-box button:hover {
+      background: #004ec0;
+      transform: translateY(-1px);
+    }
+
+    .account {
+      justify-self: end;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      font-weight: 800;
+      color: #073b82;
+      white-space: nowrap;
+    }
+
+    .account svg {
+      width: 23px;
+      height: 23px;
+    }
+
+    .account span {
+      font-size: 15px;
+    }
+
+    /* HERO */
+
+    .hero-card {
+      width: 100%;
+      min-height: 340px;
+      background: #f4faff;
+      border-radius: 36px;
+      padding: 60px 70px;
+      display: grid;
+      grid-template-columns: 1fr 460px;
+      align-items: center;
+      gap: 60px;
+      box-shadow: 0 22px 60px rgba(0, 53, 130, 0.07);
+      margin-bottom: 36px;
+    }
+
+    .pill {
+      display: inline-flex;
+      background: #82c8f4;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      padding: 15px 24px;
+      border-radius: 999px;
+      margin-bottom: 26px;
+      text-transform: uppercase;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(32px, 4vw, 50px);
+      color: #073b82;
+      line-height: 1.05;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    .hero-content h2 {
+      font-size: clamp(22px, 2.5vw, 34px);
+      color: #073b82;
+      line-height: 1.15;
+      font-weight: 800;
+      margin-bottom: 30px;
+    }
+
+    .primary-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      background: #005bdf;
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 900;
+      padding: 18px 34px;
+      border-radius: 28px;
+      box-shadow: 0 10px 22px rgba(0, 91, 223, 0.22);
+      transition: 0.2s ease;
+    }
+
+    .primary-btn:hover {
+      background: #004ec0;
+      transform: translateY(-2px);
+    }
+
+    .hero-image-wrap {
+      position: relative;
+      min-height: 180px;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 205px;
+      object-fit: cover;
+      border-radius: 26px;
+      display: block;
+    }
+
+    .discount-badge {
+      width: 92px;
+      height: 92px;
+      background: #5a9af3;
+      color: #fff;
+      border-radius: 50%;
+      position: absolute;
+      right: -35px;
+      top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 42px;
+      font-weight: 900;
+      box-shadow: 0 14px 30px rgba(0, 80, 180, 0.18);
+    }
+
+    .slider-dots {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: -52px;
+      margin-bottom: 46px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 999px;
+      background: #d4e5ff;
+      display: block;
+    }
+
+    .dot.active {
+      width: 38px;
+      background: #005bdf;
+    }
+
+    /* CATEGORY CARDS */
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+    }
+
+    .category-card {
+      min-height: 270px;
+      background: #f4faff;
+      border-radius: 28px;
+      box-shadow: 0 18px 44px rgba(0, 53, 130, 0.07);
+      padding: 46px 44px;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      align-items: center;
+      gap: 30px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .category-content h3 {
+      font-size: clamp(30px, 3vw, 42px);
+      color: #073b82;
+      font-weight: 950;
+      margin-bottom: 26px;
+      text-transform: uppercase;
+    }
+
+    .category-content p {
+      font-size: 19px;
+      line-height: 1.25;
+      font-weight: 800;
+      color: #073b82;
+      margin-bottom: 30px;
+      max-width: 280px;
+    }
+
+    .category-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    .small-btn {
+      font-size: 16px;
+      padding: 15px 28px;
+      border-radius: 25px;
+    }
+
+    .decor-plus {
+      position: absolute;
+      bottom: -35px;
+      right: 90px;
+      font-size: 110px;
+      line-height: 1;
+      font-weight: 900;
+      color: rgba(0, 91, 223, 0.08);
+      pointer-events: none;
+    }
+
+    /* IA FLOAT */
+
+    .ia-button {
+      position: fixed;
+      right: 34px;
+      bottom: 28px;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: #005bdf;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 900;
+      text-decoration: none;
+      box-shadow: 0 18px 40px rgba(0, 60, 170, 0.28);
+      z-index: 20;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 1200px) {
+      .medic-page {
+        padding: 34px 32px 80px;
+      }
+
+      .hero-card {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-image-wrap {
+        max-width: 600px;
+      }
+
+      .category-card {
+        grid-template-columns: 1fr;
+      }
+
+      .category-image {
+        max-width: 440px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .medic-header {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .account {
+        justify-self: start;
+      }
+
+      .search-box {
+        max-width: 100%;
+      }
+
+      .category-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        padding: 44px 32px;
+        border-radius: 26px;
+      }
+
+      .discount-badge {
+        width: 76px;
+        height: 76px;
+        font-size: 34px;
+        right: -15px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .medic-page {
+        padding: 24px 18px 90px;
+      }
+
+      .search-box {
+        height: auto;
+        padding: 16px;
+        flex-wrap: wrap;
+      }
+
+      .search-box input {
+        flex-basis: calc(100% - 46px);
+        font-size: 14px;
+      }
+
+      .search-box button {
+        width: 100%;
+      }
+
+      .hero-card {
+        padding: 34px 24px;
+        min-height: auto;
+      }
+
+      .hero-image {
+        height: 170px;
+      }
+
+      .category-card {
+        padding: 34px 24px;
+        min-height: auto;
+      }
+
+      .category-content p {
+        font-size: 17px;
+      }
+
+      .primary-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .ia-button {
+        right: 20px;
+        bottom: 20px;
+        width: 62px;
+        height: 62px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="medic-page">
+
+    <header class="medic-header">
+
+      <div class="logo">
+        <div class="logo-top">medic</div>
+        <div class="logo-bottom">
+          <span class="logo-go">GO</span>
+          <span class="logo-plus"></span>
+        </div>
+        <div class="logo-text">TU FARMACIA AL COSTO</div>
+      </div>
+
+      <form class="search-box">
+        <svg class="search-icon" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="7"></circle>
+          <path d="M20 20L16.2 16.2"></path>
+        </svg>
+
+        <input type="text" placeholder="Buscar productos, marcas y más..." />
+        <button type="submit">Buscar</button>
+      </form>
+
+      <div class="account">
+        <svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
+          <path d="M20 21a8 8 0 0 0-16 0"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+        <span>Mi cuenta⌄</span>
+      </div>
+
+    </header>
+
+    <section class="hero-card">
+      <div class="hero-content">
+        <span class="pill">Cuidá tu salud</span>
+
+        <h1>Hasta 40% OFF</h1>
+        <h2>en medicamentos seleccionados</h2>
+
+        <a href="#" class="primary-btn">Ver ofertas →</a>
+      </div>
+
+      <div class="hero-image-wrap">
+        <img 
+          class="hero-image"
+          src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80" 
+          alt="Farmacéutica en farmacia"
+        />
+        <div class="discount-badge">%</div>
+      </div>
+    </section>
+
+    <div class="slider-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+    </div>
+
+    <section class="category-grid">
+
+      <article class="category-card">
+        <div class="category-content">
+          <h3>Farmacia</h3>
+          <p>Todo lo que necesitás para tu salud.</p>
+          <a href="#" class="primary-btn small-btn">Ver productos →</a>
+        </div>
+
+        <img 
+          class="category-image"
+          src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=700&q=80" 
+          alt="Productos de farmacia"
+        />
+
+        <div class="decor-plus">+</div>
+      </article>
+
+      <article class="category-card">
+        <div class="category-content">
+          <h3>Veterinaria</h3>
+          <p>Cuidado y bienestar para tus mascotas.</p>
+          <a href="#" class="primary-btn small-btn">Ver productos →</a>
+        </div>
+
+        <img 
+          class="category-image"
+          src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&w=700&q=80" 
+          alt="Veterinaria con perro"
+        />
+      </article>
+
+    </section>
+
+    <a href="#" class="ia-button">IA</a>
+
+  </main>
+
+</body>
+</html>
