@@ -393,15 +393,19 @@
     }
     
     @media (max-width: 560px) {
+      .medic-page {
+        padding: 16px 16px 80px;
+      }
       .medic-header {
         flex-wrap: nowrap;
-        gap: 12px;
+        gap: 10px;
+        margin-bottom: 24px;
       }
       
       .search-container {
         order: initial;
         flex: 1;
-        padding: 4px 10px;
+        padding: 6px 12px;
       }
       
       .search-btn {
@@ -412,10 +416,68 @@
         display: none;
       }
       
-      .logo-top { font-size: 20px; }
-      .logo-go { font-size: 28px; }
-      .logo-plus-container { width: 16px; height: 16px; }
+      .logo-top { font-size: 16px; letter-spacing: 0; }
+      .logo-go { font-size: 22px; letter-spacing: 0; }
+      .logo-plus-container { width: 14px; height: 14px; margin-bottom: 3px; }
       .logo-text { display: none; }
+      
+      /* Compress Hero Section */
+      .hero-card {
+        padding: 24px 20px;
+        margin-bottom: 16px;
+        border-radius: 24px;
+      }
+      .pill {
+        margin-bottom: 12px;
+        font-size: 11px;
+        padding: 6px 14px;
+      }
+      .hero-content h1 {
+        font-size: 32px;
+        margin-bottom: 4px;
+      }
+      .hero-content h2 {
+        font-size: 18px;
+        margin-bottom: 20px;
+      }
+      .primary-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 12px;
+        font-size: 15px;
+      }
+      .hero-image-container {
+        height: 150px;
+        margin-top: 20px;
+      }
+      .discount-badge {
+        width: 60px;
+        height: 60px;
+        font-size: 26px;
+        top: -10px;
+        right: -10px;
+      }
+      .slider-dots {
+        margin-bottom: 24px;
+      }
+      
+      /* Compress Category Cards */
+      .category-card {
+        padding: 24px 20px;
+        border-radius: 24px;
+      }
+      .category-content h3 {
+        font-size: 24px;
+        margin-bottom: 8px;
+      }
+      .category-content p {
+        font-size: 14px;
+        margin-bottom: 20px;
+      }
+      .category-image {
+        height: 140px;
+        border-radius: 16px;
+      }
     }
   </style>
 </head>
